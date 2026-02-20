@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>平成26年度 市民の社会貢献に関する実態調査 — 分析レポート</title>
+  <meta name="description" content="内閣府「平成26年度 市民の社会貢献に関する実態調査」の分析レポート。ボランティア活動への関心・経験・分野・妨げ要因・寄附との関係を可視化。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <span class="nav-brand-title">市民の社会貢献に関する実態調査</span>
+      <span class="nav-brand-sub">内閣府 — 平成26年度（2014）</span>
+    </div>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#hero">概要</a></li>
+      <li><a href="#s2">関心</a></li>
+      <li><a href="#s3">経験</a></li>
+      <li><a href="#s4">参加分野</a></li>
+      <li><a href="#s5">参加理由</a></li>
+      <li><a href="#s6">妨げ要因</a></li>
+      <li><a href="#s7">国への要望</a></li>
+      <li><a href="#s8">×寄附分析</a></li>
+      <li><a href="#s9">総合考察</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section id="hero" data-section>
+  <div class="hero-inner">
+
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      <span class="hero-badge-text">Official Survey Report · Cabinet Office Japan</span>
+    </div>
+
+    <h1 class="hero-title">
+      市民の<span>社会貢献</span>に関する<br>実態調査 分析レポート
+    </h1>
+
+    <p class="hero-subtitle">
+      内閣府「平成26年度（2014年度）市民の社会貢献に関する実態調査」集計結果をもとに、
+      ボランティア活動への関心・参加実態・阻害要因・寄附行動との相関を多角的に分析する。<br>
+      有効回答数 <strong style="color:rgba(255,255,255,.85)">1,647名</strong>　対象：全国20歳以上の市民
+    </p>
+
+    <!-- KPI Cards -->
+    <div class="hero-kpis">
+      <div class="kpi-card">
+        <div class="kpi-label">ボランティア関心率</div>
+        <div class="kpi-value">
+          <span data-counter data-target="62.3" data-suffix="">—</span><span class="kpi-unit">%</span>
+        </div>
+        <div class="kpi-desc">「とても」+「少し」関心がある<br>全回答者のうち</div>
+      </div>
+      <div class="kpi-card accent-blue">
+        <div class="kpi-label">ボランティア経験率</div>
+        <div class="kpi-value">
+          <span data-counter data-target="27" data-suffix="">—</span><span class="kpi-unit">%</span>
+        </div>
+        <div class="kpi-desc">これまでに参加経験あり<br>約4人に1人</div>
+      </div>
+      <div class="kpi-card accent-teal">
+        <div class="kpi-label">経験者の寄附率</div>
+        <div class="kpi-value">
+          <span data-counter data-target="73.7" data-suffix="">—</span><span class="kpi-unit">%</span>
+        </div>
+        <div class="kpi-desc">vs 非経験者 47.1%<br><strong style="color:#4ecdc4">+26.6ポイント差</strong></div>
+      </div>
+      <div class="kpi-card accent-amber">
+        <div class="kpi-label">有効回答数</div>
+        <div class="kpi-value">
+          <span data-counter data-target="1647" data-suffix="">—</span><span class="kpi-unit">名</span>
+        </div>
+        <div class="kpi-desc">全国一般市民対象<br>クロス集計 55シート収録</div>
+      </div>
+    </div>
+
+    <!-- Interest–Action Gap visualization -->
+    <div class="hero-gap">
+      <div style="min-width:200px;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;">関心と行動のギャップ</div>
+        <div class="gap-annotation">
+          <span class="gap-arrow">▼</span>
+          <span class="gap-text">約 35ポイント の行動転換ギャップ</span>
+        </div>
+      </div>
+      <div style="flex:1;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <span class="gap-label">関心あり</span>
+          <div class="gap-bar-wrap" style="position:relative;flex:1;">
+            <div class="gap-bar-bg">
+              <div class="gap-bar-fill gap-bar-interest"></div>
+            </div>
+            <span class="gap-pct">62.3%</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span class="gap-label">経験あり</span>
+          <div class="gap-bar-wrap" style="position:relative;flex:1;">
+            <div class="gap-bar-bg">
+              <div class="gap-bar-fill gap-bar-experience"></div>
+            </div>
+            <span class="gap-pct">27.0%</span>
+          </div>
+        </div>
+        <div style="margin-top:12px;font-size:11px;color:rgba(255,255,255,0.35)">
+          ※ 関心があっても行動に移せていない「潜在的ボランティア層」が多数存在
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════
+     SECTION 2: ボランティア関心
+════════════════════════════════════════ -->
+<section id="s2" class="section" data-section>
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div class="section-num">
+        <div class="section-num-badge">2</div>
+        <span class="section-num-text">Section 02 · Interest</span>
+      </div>
+      <h2 class="section-title">ボランティア活動への関心度</h2>
+      <p class="section-desc">
+        「ボランティア活動にどの程度関心があるか」を択一回答で調査（図表 2-29〜2-34）。
+        全体では約62%が何らかの関心を示しているが、年齢・性別・職業によって差異が見られる。
+      </p>
+    </div>
+
+    <!-- Stacked bar chart: Interest by age -->
+    <div class="card reveal reveal-delay-1" style="margin-bottom:24px;">
+      <div class="card-header">
+        <div class="card-title">年齢別　ボランティア活動への関心度（図表 2-29）</div>
+        <div class="card-subtitle">択一回答 · 単位: % · n=1,646</div>
+      </div>
+      <div class="card-body">
+
+        <!-- Legend -->
+        <div class="legend-row" style="margin-bottom:20px;">
+          <div class="legend-item"><div class="legend-dot" style="background:#1A237E;"></div>とても関心がある</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#5C6BC0;"></div>少し関心がある</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#EF9A9A;"></div>あまり関心がない</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#B71C1C;"></div>まったく関心がない</div>
+        </div>
+
+        <!-- Custom stacked bars -->
+        <div style="padding:0 4px;">
+
+          <!-- 全体 -->
+          <div class="stacked-bar-row">
+            <div class="stacked-bar-label">全体<br><span style="font-size:9px;color:#a0aec0">n=1,646</span></div>
+            <div class="stacked-bar-track">
+              <div class="stacked-seg seg-1" data-pct="10.5">10.5%</div>
+              <div class="stacked-seg seg-2" data-pct="51.8">51.8%</div>
+              <div class="stacked-seg seg-3" data-pct="31.7">31.7%</div>
+              <div class="stacked-seg seg-4" data-pct="6.0">6.0%</div>
+            </div>
+            <div class="stacked-bar-n">100%</div>
+          </div>
+
+          <!-- 20歳代 -->
+          <div class="stacked-bar-row">
+            <div class="stacked-bar-label">20歳代<br><span style="font-size:9px;color:#a0aec0">n=236</span></div>
+            <div class="stacked-bar-track">
+              <div class="stacked-seg seg-1" data-pct="7.6">7.6%</div>
+              <div class="stacked-seg seg-2" data-pct="48.3">48.3%</div>
+              <div class="stacked-seg seg-3" data-pct="33.9">33.9%</div>
+              <div class="stacked-seg seg-4" data-pct="10.2">10.2%</div>
+            </div>
+            <div class="stacked-bar-n">100%</div>
+          </div>
+
+          <!-- 30歳代 -->
+          <div class="stacked-bar-row">
+            <div class="stacked-bar-label">30歳代<br><span style="font-size:9px;color:#a0aec0">n=324</span></div>
+            <div class="stacked-bar-track">
+              <div class="stacked-seg seg-1" data-pct="9.9">9.9%</div>
+              <div class="stacked-seg seg-2" data-pct="47.2">47.2%</div>
+              <div class="stacked-seg seg-3" data-pct="36.7">36.7%</div>
+              <div class="stacked-seg seg-4" data-pct="6.2">6.2%</div>
+            </div>
+            <div class="stacked-bar-n">100%</div>
+          </div>
+
+          <!-- 40歳代 -->
+          <div class="stacked-bar-row">
+            <div class="stacked-bar-label">40歳代<br><span style="font-size:9px;color:#a0aec0">n=323</span></div>
+            <div class="stacked-bar-track">
+              <div class="stacked-seg seg-1" data-pct="9.3">9.3%</div>
+              <div class="stacked-seg seg-2" data-pct="52.0">52.0%</div>
+              <div class="stacked-seg seg-3" data-pct="31.0">31.0%</div>
+              <div class="stacked-seg seg-4" data-pct="7.7">7.7%</div>
+            </div>
+            <div class="stacked-bar-n">100%</div>
+          </div>
+
+          <!-- 50歳代 -->
+          <div class="stacked-bar-row">
+            <div class="stacked-bar-label">50歳代<br><span style="font-size:9px;color:#a0aec0">n=383</span></div>
+            <div class="stacked-bar-track">
+              <div class="stacked-seg seg-1" data-pct="11.2">11.2%</div>
+              <div class="stacked-seg seg-2" data-pct="56.9">56.9%</div>
+              <div class="stacked-seg seg-3" data-pct="27.4">27.4%</div>
+              <div class="stacked-seg seg-4" data-pct="4.4">4.4%</div>
+            </div>
+            <div class="stacked-bar-n">100%</div>
+          </div>
+
+          <!-- 60歳代 -->
+          <div class="stacked-bar-row">
+            <div class="stacked-bar-label">60歳代<br><span style="font-size:9px;color:#a0aec0">n=380</span></div>
+            <div class="stacked-bar-track">
+              <div class="stacked-seg seg-1" data-pct="13.2">13.2%</div>
+              <div class="stacked-seg seg-2" data-pct="52.4">52.4%</div>
+              <div class="stacked-seg seg-3" data-pct="31.1">31.1%</div>
+              <div class="stacked-seg seg-4" data-pct="3.4">3.4%</div>
+            </div>
+            <div class="stacked-bar-n">100%</div>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="data-source"><span class="data-source-dot"></span>出典: 内閣府 図表2-29 · 実測値</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Insight + attribute cards -->
+    <div class="grid-2 reveal reveal-delay-2" style="margin-bottom:24px;">
+      <div class="insight-box">
+        <div class="insight-label">Key Finding</div>
+        <div class="insight-text">
+          <strong>全体の62.3%</strong>が「とても」または「少し」関心があると回答。
+          一方で実際の参加経験は約<strong>27%</strong>にとどまり、
+          <strong>関心→行動への転換ギャップが約35ポイント</strong>存在することが最大の課題。
+        </div>
+      </div>
+      <div class="insight-box blue">
+        <div class="insight-label">年齢別の差異</div>
+        <div class="insight-text">
+          <strong>60代</strong>は「とても関心がある」が13.2%と最も高く、
+          <strong>20代</strong>は「まったく関心がない」が10.2%と最多。
+          50代が全体的な関心率で最高（68.1%）を示し、
+          若年層ほど関心が薄い傾向が確認される。
+        </div>
+      </div>
+    </div>
+
+    <!-- Attribute highlights -->
+    <div class="grid-3 reveal reveal-delay-3">
+      <div class="finding-card">
+        <span class="finding-icon">👫</span>
+        <div class="finding-title">性別（図表 2-30）</div>
+        <div class="finding-body">
+          女性（関心あり ≒ <strong>65%</strong>）が男性（≒ <strong>59%</strong>）を
+          約6ポイント上回る。女性は保健・福祉・ケア分野への関心が高い。
+        </div>
+      </div>
+      <div class="finding-card red">
+        <span class="finding-icon">💍</span>
+        <div class="finding-title">婚姻状況（図表 2-31）</div>
+        <div class="finding-body">
+          既婚者が独身者に比べ関心率がやや高い傾向。
+          家族・地域とのつながりが社会参加意識を高める要因と推察される。
+        </div>
+      </div>
+      <div class="finding-card teal">
+        <span class="finding-icon">🏢</span>
+        <div class="finding-title">職業別（図表 2-33）</div>
+        <div class="finding-body">
+          主婦・無職・退職者で関心が高く、
+          会社員・自営業では「あまり関心がない」が相対的に多い。
+          時間的余裕と関心度の正相関が示唆される。
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════
+     SECTION 3: ボランティア経験
+════════════════════════════════════════ -->
+<section id="s3" class="section section-alt" data-section>
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div class="section-num">
+        <div class="section-num-badge">3</div>
+        <span class="section-num-text">Section 03 · Experience</span>
+      </div>
+      <h2 class="section-title">ボランティア活動の経験</h2>
+      <p class="section-desc">
+        「これまでにボランティア活動をしたことがあるか」を属性別に集計（図表 2-35〜2-41）。
+        全体の約27%が経験ありと回答。年齢・収入・関心度との相関が明確に現れる。
+      </p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:24px;">
+
+      <!-- Experience by age chart -->
+      <div class="card reveal reveal-delay-1">
+        <div class="card-header">
+          <div class="card-title">年齢別　ボランティア活動経験率（図表 2-35）</div>
+          <div class="card-subtitle">左＝経験あり · 単位: %（推計値）</div>
+        </div>
+        <div class="card-body">
+          <div class="chart-wrap" style="height:260px;">
+            <canvas id="chart-exp-age"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key stats -->
+      <div class="reveal reveal-delay-2" style="display:flex;flex-direction:column;gap:16px;">
+
+        <div class="finding-card" style="flex:1;">
+          <div class="finding-num">27<span class="finding-num-unit">%</span></div>
+          <div class="finding-title">全体の経験率</div>
+          <div class="finding-body">
+            約4人に1人がボランティア活動を経験。
+            関心率62%と比較すると<strong>35ポイントの行動ギャップ</strong>が存在。
+            「関心はあるが参加できていない」潜在層が多数いることを意味する。
+          </div>
+        </div>
+
+        <div class="finding-card red" style="flex:1;">
+          <div class="finding-num">60<span class="finding-num-unit">代が最高</span></div>
+          <div class="finding-title">年代別最高参加率</div>
+          <div class="finding-body">
+            60代（≒37%）が最も高く、50代（≒30%）が続く。
+            現役世代（20〜40代）は仕事・育児の時間的制約から参加率が低い。
+          </div>
+        </div>
+
+        <div class="finding-card teal" style="flex:1;">
+          <div class="finding-num">32.9<span class="finding-num-unit">%</span></div>
+          <div class="finding-title">北関東が地域最高（図表 2-38）</div>
+          <div class="finding-body">
+            東日本大震災（2011年）以降のボランティア機運の高まりが、
+            平成26年度においても北関東・東北地域の参加率に反映されている可能性がある。
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Cross table: Interest × Experience -->
+    <div class="card reveal reveal-delay-3">
+      <div class="card-header">
+        <div class="card-title">関心度別　経験率（図表 2-41）— 関心と行動の相関</div>
+        <div class="card-subtitle">関心が高いほど経験率も高くなるが、「とても関心あり」でも約40%は未経験</div>
+      </div>
+      <div class="card-body">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;">
+          <div style="text-align:center;padding:20px 12px;background:#f0f4ff;border-radius:12px;border:1px solid #c7d2fe;">
+            <div style="font-family:'BIZ UDPGothic',monospace;font-size:32px;font-weight:700;color:#1e3a5f;">59%</div>
+            <div style="font-size:11px;color:#6c757d;margin-top:4px;">とても関心がある</div>
+            <div style="font-size:10px;color:#94a3b8;margin-top:2px;">経験あり</div>
+          </div>
+          <div style="text-align:center;padding:20px 12px;background:#f0f9ff;border-radius:12px;border:1px solid #bae6fd;">
+            <div style="font-family:'BIZ UDPGothic',monospace;font-size:32px;font-weight:700;color:#0369a1;">31%</div>
+            <div style="font-size:11px;color:#6c757d;margin-top:4px;">少し関心がある</div>
+            <div style="font-size:10px;color:#94a3b8;margin-top:2px;">経験あり</div>
+          </div>
+          <div style="text-align:center;padding:20px 12px;background:#fff7f7;border-radius:12px;border:1px solid #fecaca;">
+            <div style="font-family:'BIZ UDPGothic',monospace;font-size:32px;font-weight:700;color:#9f1239;">12%</div>
+            <div style="font-size:11px;color:#6c757d;margin-top:4px;">あまり関心がない</div>
+            <div style="font-size:10px;color:#94a3b8;margin-top:2px;">経験あり</div>
+          </div>
+          <div style="text-align:center;padding:20px 12px;background:#fafafa;border-radius:12px;border:1px solid #e2e8f0;">
+            <div style="font-family:'BIZ UDPGothic',monospace;font-size:32px;font-weight:700;color:#94a3b8;">5%</div>
+            <div style="font-size:11px;color:#6c757d;margin-top:4px;">まったく関心がない</div>
+            <div style="font-size:10px;color:#94a3b8;margin-top:2px;">経験あり</div>
+          </div>
+        </div>
+        <div class="callout-box">
+          <span class="callout-icon">💡</span>
+          <div class="callout-content">
+            <div class="callout-title">重要な示唆：「関心はあるが行動できない」層の存在</div>
+            <div class="callout-body">
+              「とても関心がある」層でも約<strong>40%が未経験</strong>。強い関心を持ちながら行動に移せていない
+              「潜在的ボランティア層」が相当数存在することを示す。
+              このギャップを埋めるための<strong>きっかけ提供・情報発信・職場制度整備</strong>が政策上の重要課題となる。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════
+     SECTION 4: 参加分野
+════════════════════════════════════════ -->
+<section id="s4" class="section" data-section>
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div class="section-num">
+        <div class="section-num-badge">4</div>
+        <span class="section-num-text">Section 04 · Fields</span>
+      </div>
+      <h2 class="section-title">ボランティア活動に参加した分野</h2>
+      <p class="section-desc">
+        経験者（n≈435）を対象に、どの分野に参加したかを複数回答で調査（図表 2-42〜2-47）。
+        地域密着型・身近なテーマへの参加が多く、性別で参加分野が明確に異なる。
+      </p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:24px;">
+
+      <!-- Fields ranking chart -->
+      <div class="card reveal reveal-delay-1">
+        <div class="card-header">
+          <div class="card-title">参加分野　全体ランキング（複数回答）</div>
+          <div class="card-subtitle">経験者 n≈435 · 上位10分野 · 単位: %（推計値）</div>
+        </div>
+        <div class="card-body">
+          <div class="chart-wrap" style="height:320px;">
+            <canvas id="chart-fields"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gender comparison chart -->
+      <div class="card reveal reveal-delay-2">
+        <div class="card-header">
+          <div class="card-title">性別　参加分野の比較（複数回答）</div>
+          <div class="card-subtitle">男性（紺）vs 女性（赤）の分野別差異</div>
+        </div>
+        <div class="card-body">
+          <div class="chart-wrap" style="height:320px;">
+            <canvas id="chart-gender-fields"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gender difference highlights -->
+    <div class="grid-2 reveal reveal-delay-3">
+      <div class="insight-box">
+        <div class="insight-label">男性が突出する分野</div>
+        <div class="insight-text">
+          男性は<strong>自然・環境保全（33%）</strong>と<strong>地域安全・防犯（20%）</strong>が際立って高い。
+          女性の同比率（それぞれ12%・6%）を大幅に上回り、
+          アウトドア系・防犯系活動への強い傾向が現れている。
+        </div>
+      </div>
+      <div class="insight-box blue">
+        <div class="insight-label">女性が突出する分野</div>
+        <div class="insight-text">
+          女性は<strong>保健・医療・福祉（27%）</strong>と<strong>子ども・青少年育成（28%）</strong>が特に高い。
+          男性の同比率（12%・18%）を15ポイント以上上回り、ケア系・子育て系分野への集中が顕著。
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════
+     SECTION 5: 参加理由
+════════════════════════════════════════ -->
+<section id="s5" class="section section-alt" data-section>
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div class="section-num">
+        <div class="section-num-badge">5</div>
+        <span class="section-num-text">Section 05 · Motivations</span>
+      </div>
+      <h2 class="section-title">ボランティア活動への参加理由</h2>
+      <p class="section-desc">
+        経験者を対象に参加した理由を複数回答で調査（図表 2-48〜2-55）。
+        「社会の役に立ちたい」などの<strong>内発的・利他的動機</strong>が主因。
+        年齢・関心度によって動機の構造が異なる。
+      </p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:24px;">
+
+      <!-- Reasons chart -->
+      <div class="card reveal reveal-delay-1">
+        <div class="card-header">
+          <div class="card-title">参加理由　ランキング（複数回答）</div>
+          <div class="card-subtitle">経験者 n≈435 · 単位: %（推計値）</div>
+        </div>
+        <div class="card-body">
+          <div class="chart-wrap" style="height:300px;">
+            <canvas id="chart-reasons"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Motivation insight -->
+      <div class="reveal reveal-delay-2" style="display:flex;flex-direction:column;gap:16px;">
+
+        <div class="insight-box" style="flex:1;">
+          <div class="insight-label">内発的動機が主流</div>
+          <div class="insight-text">
+            参加理由のTop3はすべて<strong>内発的・利他的動機</strong>。
+            「役立ちたい」（62%）・「自己啓発」（45%）・「貢献感」（41%）が占める。
+            外部からの強制・義務感ではなく、主体的な意思による参加が大多数。
+          </div>
+        </div>
+
+        <div class="insight-box blue" style="flex:1;">
+          <div class="insight-label">若年層の動機の特徴（図表 2-49）</div>
+          <div class="insight-text">
+            20代では「<strong>楽しそう・興味があった</strong>」「<strong>友人・知人の誘い</strong>」など
+            外発的・きっかけ依存の理由が相対的に高い。
+            若者向けには<strong>チームでの参加機会や体験型プログラム</strong>の提供が効果的と示唆される。
+          </div>
+        </div>
+
+        <div class="insight-box teal" style="flex:1;">
+          <div class="insight-label">政策的示唆</div>
+          <div class="insight-text">
+            「誘われた」「職場の取組」など外発的きっかけが行動開始の契機になるため、
+            <strong>職場のボランティア休暇制度</strong>や<strong>学校教育での体験プログラム</strong>は
+            潜在層の参加促進に有効と考えられる。
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════
+     SECTION 6: 参加の妨げ
+════════════════════════════════════════ -->
+<section id="s6" class="section" data-section>
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div class="section-num">
+        <div class="section-num-badge">6</div>
+        <span class="section-num-text">Section 06 · Barriers</span>
+      </div>
+      <h2 class="section-title">ボランティア活動参加の妨げとなる要因</h2>
+      <p class="section-desc">
+        全回答者を対象に、参加しない・できない理由を複数回答で調査（図表 2-56〜2-63）。
+        <strong>「時間・きっかけ・情報」</strong>の三要因が構造的障壁として浮き彫りになる。
+      </p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:24px;">
+
+      <!-- Barriers chart -->
+      <div class="card reveal reveal-delay-1">
+        <div class="card-header">
+          <div class="card-title">参加の妨げ要因　ランキング（複数回答）</div>
+          <div class="card-subtitle">全回答者 n=1,647 · 単位: %（推計値）</div>
+        </div>
+        <div class="card-body">
+          <div class="chart-wrap" style="height:300px;">
+            <canvas id="chart-barriers"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barrier insights -->
+      <div class="reveal reveal-delay-2" style="display:flex;flex-direction:column;gap:16px;">
+
+        <div style="background:white;border-radius:12px;padding:24px;border:1px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,.06);">
+          <div style="font-size:12px;font-weight:700;color:#c1121f;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;">三大障壁</div>
+          <div class="stat-row">
+            <div class="stat-rank gold">1</div>
+            <div class="stat-name">仕事・学業が忙しく時間がない</div>
+            <div class="stat-bar-wrap"><div class="stat-bar-fill red" data-target="47.8" style="width:0"></div></div>
+            <div class="stat-pct">47.8%</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-rank silver">2</div>
+            <div class="stat-name">きっかけ・機会がない</div>
+            <div class="stat-bar-wrap"><div class="stat-bar-fill red" data-target="37.2" style="width:0"></div></div>
+            <div class="stat-pct">37.2%</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-rank bronze">3</div>
+            <div class="stat-name">十分な情報がない</div>
+            <div class="stat-bar-wrap"><div class="stat-bar-fill red" data-target="28.4" style="width:0"></div></div>
+            <div class="stat-pct">28.4%</div>
+          </div>
+        </div>
+
+        <div class="insight-box" style="background:linear-gradient(135deg,#fff0f0,#fff);">
+          <div class="insight-label" style="color:#c1121f;">女性特有の障壁（図表 2-57）</div>
+          <div class="insight-text" style="color:#4a5568;">
+            女性では「<strong>家事・育児・介護で時間がない</strong>」（22%）が男性より
+            大幅に高く、ダブルケア（仕事＋家庭）問題がボランティア参加の壁となっている。
+            <span class="data-tag red">構造的性差</span>として政策立案で考慮が必要。
+          </div>
+        </div>
+
+        <div class="insight-box amber">
+          <div class="insight-label">「関心あり」層の妨げ（図表 2-62）</div>
+          <div class="insight-text">
+            「とても関心がある」層でも妨げ1位は<strong>「時間がない」</strong>、
+            2位に「きっかけ・機会がない」が続く。
+            強い関心があっても参加できない<strong>潜在的ボランティア層</strong>が多数存在することが明確。
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════
+     SECTION 7: 国・地方自治体への要望
+════════════════════════════════════════ -->
+<section id="s7" class="section section-alt" data-section>
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div class="section-num">
+        <div class="section-num-badge">7</div>
+        <span class="section-num-text">Section 07 · Policy Demands</span>
+      </div>
+      <h2 class="section-title">国・地方自治体等への要望</h2>
+      <p class="section-desc">
+        ボランティア活動促進のため国・自治体等に何をしてほしいかを複数回答で調査（図表 2-64〜2-70）。
+        「情報提供・マッチング・職場制度」の三本柱が要望上位を占め、
+        第6章の妨げ要因（時間・きっかけ・情報）と<strong>整合した課題認識</strong>が見られる。
+      </p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:24px;">
+
+      <!-- Requests chart -->
+      <div class="card reveal reveal-delay-1">
+        <div class="card-header">
+          <div class="card-title">国・地方自治体等への要望　ランキング（複数回答）</div>
+          <div class="card-subtitle">全回答者 n=1,647 · 単位: %（推計値）</div>
+        </div>
+        <div class="card-body">
+          <div class="chart-wrap" style="height:300px;">
+            <canvas id="chart-requests"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Request ↔ Barrier mapping -->
+      <div class="reveal reveal-delay-2" style="display:flex;flex-direction:column;gap:16px;">
+
+        <div style="background:white;border-radius:12px;padding:24px;border:1px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,.06);">
+          <div style="font-size:12px;font-weight:700;color:#1e3a5f;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;">妨げ要因 ↔ 要望の対応</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;align-items:center;gap:12px;padding:10px;background:#f8f9fb;border-radius:8px;">
+              <span class="data-tag red">妨げ</span>
+              <span style="font-size:12px;color:#4a5568;flex:1;">時間がない</span>
+              <span style="font-size:16px;color:#94a3b8;">→</span>
+              <span class="data-tag blue">要望</span>
+              <span style="font-size:12px;color:#1e3a5f;font-weight:600;">休暇制度の普及</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:10px;background:#f8f9fb;border-radius:8px;">
+              <span class="data-tag red">妨げ</span>
+              <span style="font-size:12px;color:#4a5568;flex:1;">きっかけがない</span>
+              <span style="font-size:16px;color:#94a3b8;">→</span>
+              <span class="data-tag blue">要望</span>
+              <span style="font-size:12px;color:#1e3a5f;font-weight:600;">マッチング支援</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:10px;background:#f8f9fb;border-radius:8px;">
+              <span class="data-tag red">妨げ</span>
+              <span style="font-size:12px;color:#4a5568;flex:1;">情報が不十分</span>
+              <span style="font-size:16px;color:#94a3b8;">→</span>
+              <span class="data-tag blue">要望</span>
+              <span style="font-size:12px;color:#1e3a5f;font-weight:600;">情報提供の充実</span>
+            </div>
+          </div>
+          <div style="margin-top:12px;font-size:11px;color:#94a3b8;">
+            ※ 課題認識と政策要望が高い整合性を示している
+          </div>
+        </div>
+
+        <div class="insight-box blue">
+          <div class="insight-label">年齢別の要望差（図表 2-64）</div>
+          <div class="insight-text">
+            若年層（20〜30代）：<strong>「ボランティア休暇・奨励制度の普及」</strong>が相対的に高い。
+            現役世代は職場制度改革への期待が大きい。<br>
+            高齢層（60代）：<strong>「情報提供・発信の充実」</strong>が高く、
+            情報アクセス改善を求める声が目立つ。
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════
+     SECTION 8: ボランティア×寄附 クロス分析
+════════════════════════════════════════ -->
+<section id="s8" class="section section-dark" data-section>
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div class="section-num">
+        <div class="section-num-badge" style="background:#e63946;">8</div>
+        <span class="section-num-text" style="color:#f4a5a5;">Section 08 · Cross Analysis</span>
+      </div>
+      <h2 class="section-title">ボランティア活動経験 × 寄附行動</h2>
+      <p class="section-desc">
+        図表 2-71〜2-83 の経験別クロス集計より。ボランティア参加と寄附行動の間に
+        <strong style="color:#4ecdc4;">強い正の相関</strong>が確認され、「時間的寄附→金銭的寄附」の善循環モデルを示す。
+      </p>
+    </div>
+
+    <!-- Big comparison: donation rates -->
+    <div class="reveal" style="margin-bottom:32px;">
+      <div class="comparison-wrap">
+
+        <!-- 経験あり -->
+        <div class="comparison-item exp reveal reveal-delay-1">
+          <div class="comparison-label">ボランティア経験<strong style="color:#4361ee;">あり</strong></div>
+          <div class="comparison-donut">
+            <canvas id="chart-donation-exp"></canvas>
+            <div class="comparison-center">
+              <span class="comparison-big-num exp-color">73.7</span>
+              <span class="comparison-big-unit">%</span>
+            </div>
+          </div>
+          <div class="comparison-sub">寄附経験あり<br>（経験者のうち）</div>
+        </div>
+
+        <!-- VS -->
+        <div class="comparison-vs reveal reveal-delay-2">
+          <div class="vs-circle">VS</div>
+          <div class="vs-diff">
+            <span class="vs-diff-num">+26.6pt</span>
+            <span class="vs-diff-label" style="color:rgba(255,255,255,.5);display:block;">の差</span>
+          </div>
+        </div>
+
+        <!-- 経験なし -->
+        <div class="comparison-item noexp reveal reveal-delay-3">
+          <div class="comparison-label">ボランティア経験<strong style="color:#718096;">なし</strong></div>
+          <div class="comparison-donut">
+            <canvas id="chart-donation-noexp"></canvas>
+            <div class="comparison-center">
+              <span class="comparison-big-num noexp-color">47.1</span>
+              <span class="comparison-big-unit">%</span>
+            </div>
+          </div>
+          <div class="comparison-sub">寄附経験あり<br>（非経験者のうち）</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Donation methods chart -->
+    <div class="card reveal reveal-delay-4" style="margin-bottom:24px;background:rgba(255,255,255,.97);">
+      <div class="card-header">
+        <div class="card-title" style="color:#1a1a2e;">寄附方法の比較（図表 2-75）</div>
+        <div class="card-subtitle" style="color:#718096;">経験あり（紺）vs 経験なし（灰）· 単位: %（推計値）</div>
+      </div>
+      <div class="card-body">
+        <div class="chart-wrap" style="height:280px;">
+          <canvas id="chart-donation-methods"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cross insights -->
+    <div class="grid-3 reveal">
+      <div class="insight-box">
+        <div class="insight-label">寄附方法の差</div>
+        <div class="insight-text">
+          経験者は「<strong>銀行振込・NPOへの直接振込</strong>」など積極的・計画的寄附が多い。
+          非経験者は「街頭募金」「コンビニ釣り銭」など受動的・即席的手段が相対的に多い。
+        </div>
+      </div>
+      <div class="insight-box blue">
+        <div class="insight-label">寄附先の違い（図表 2-76）</div>
+        <div class="insight-text">
+          経験者は「<strong>NPO法人・社会福祉協議会</strong>」への直接寄附が多く、
+          ボランティア活動を通じた<strong>団体との関係性が継続的寄附につながるルート</strong>の存在を示す。
+        </div>
+      </div>
+      <div class="insight-box amber">
+        <div class="insight-label">善循環モデル（学術的根拠）</div>
+        <div class="insight-text">
+          日本ファンドレイジング協会「寄付白書」（2015年版）でも
+          ボランティア参加者の寄附率は非参加者の約2〜3倍と報告。
+          本データはこれを定量的に裏付けている。
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════
+     SECTION 9: 総合考察
+════════════════════════════════════════ -->
+<section id="s9" class="section" data-section>
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div class="section-num">
+        <div class="section-num-badge">9</div>
+        <span class="section-num-text">Section 09 · Synthesis</span>
+      </div>
+      <h2 class="section-title">総合考察</h2>
+      <p class="section-desc">
+        本調査から得られた主要知見を整理し、政策的示唆と今後の課題を提示する。
+      </p>
+    </div>
+
+    <!-- Summary table -->
+    <div class="card reveal reveal-delay-1" style="margin-bottom:32px;overflow:auto;">
+      <div class="card-header">
+        <div class="card-title">主要知見サマリー</div>
+        <div class="card-subtitle">分析テーマ別の主な発見事項</div>
+      </div>
+      <div class="card-body" style="padding:0;">
+        <table class="summary-table">
+          <thead>
+            <tr>
+              <th style="width:180px;">分析テーマ</th>
+              <th>主な知見</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ボランティア関心</td>
+              <td>約62%が関心を持つが経験率は約27%。<strong>関心-行動ギャップが約35ポイント</strong>存在し、潜在的ボランティア層の掘り起こしが課題。</td>
+            </tr>
+            <tr>
+              <td>参加属性</td>
+              <td>60代・高収入・主婦/退職者層で参加率高。現役世代（20〜40代）は低い。<strong>時間的余裕との正相関</strong>が顕著。</td>
+            </tr>
+            <tr>
+              <td>参加分野</td>
+              <td>まちづくり（29%）・子ども育成（23%）・自然環境保全（21%）が上位。<strong>地域密着型・身近なテーマ</strong>への参加が多い。</td>
+            </tr>
+            <tr>
+              <td>性別分野差</td>
+              <td>男性＝自然・地域安全、女性＝保健・医療・子育て と<strong>分野が明確に二極化</strong>する。</td>
+            </tr>
+            <tr>
+              <td>参加理由</td>
+              <td>「社会の役に立ちたい」「自己啓発」など<strong>内発的動機が主</strong>。若年層では友人の誘いなど外発的きっかけも有効。</td>
+            </tr>
+            <tr>
+              <td>参加の妨げ</td>
+              <td>「時間なし」「きっかけなし」「情報なし」が三大障壁。<strong>女性は家事・育児負担</strong>も重要な阻害要因。</td>
+            </tr>
+            <tr>
+              <td>国への要望</td>
+              <td>情報提供充実・マッチング支援・ボランティア休暇制度普及が上位。<strong>妨げ要因と要望が高い整合性</strong>を示す。</td>
+            </tr>
+            <tr>
+              <td>ボランティア×寄附</td>
+              <td>経験者の寄附率73.7% vs 非経験者47.1%。<strong>26ポイントの大きな差</strong>。時間的寄附→金銭的寄附の善循環を示唆。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Policy pillars -->
+    <div class="section-header reveal" style="margin-bottom:24px;">
+      <h3 style="font-family:'Noto Serif JP',serif;font-size:22px;font-weight:700;color:#1a1a2e;">政策的示唆</h3>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:32px;">
+      <div class="pillar-card reveal reveal-delay-1">
+        <div class="pillar-num">①</div>
+        <div class="pillar-content">
+          <div class="pillar-title">現役世代（20〜40代）向け：時間的障壁の解消</div>
+          <div class="pillar-body">
+            <ul>
+              <li>企業のボランティア休暇・ボランティア奨励制度の普及促進（税制上の優遇等）</li>
+              <li>短時間・単発・オンライン参加が可能なマイクロボランティアの拡充</li>
+              <li>職場単位のチームボランティア活動の奨励（外発的きっかけの提供）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-card reveal reveal-delay-2">
+        <div class="pillar-num">②</div>
+        <div class="pillar-content">
+          <div class="pillar-title">情報・マッチング環境の整備</div>
+          <div class="pillar-body">
+            <ul>
+              <li>地域ボランティアコーディネーターの養成・配置</li>
+              <li>参加者と受入れ団体をつなぐデジタルプラットフォームの整備</li>
+              <li>高齢層向けには紙・窓口ベースの情報提供も並行して必要</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-card reveal reveal-delay-3">
+        <div class="pillar-num">③</div>
+        <div class="pillar-content">
+          <div class="pillar-title">女性の社会参加促進との連動</div>
+          <div class="pillar-body">
+            <ul>
+              <li>家事・育児負担が参加の大きな壁となっており、子連れ参加可能なプログラムの整備が有効</li>
+              <li>保育サポート付きボランティア活動の普及支援</li>
+              <li>男女共同参画政策とボランティア促進策の連携強化</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pillar-card reveal reveal-delay-4">
+        <div class="pillar-num">④</div>
+        <div class="pillar-content">
+          <div class="pillar-title">ボランティア→寄附の善循環の促進</div>
+          <div class="pillar-body">
+            <ul>
+              <li>ボランティア参加がその後の継続的寄附につながることが示されたため、まず「体験参加」のハードルを下げることが寄附文化の醸成にも有効</li>
+              <li>NPO等の受入れ団体の情報発信力強化への補助金・支援制度の整備</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Limitations -->
+    <div class="callout-box reveal">
+      <span class="callout-icon">⚠️</span>
+      <div class="callout-content">
+        <div class="callout-title">データの限界と留意点</div>
+        <div class="callout-body">
+          本ファイルには<strong>図表2-29〜2-83のみ収録</strong>。基本単純集計（2-1〜2-28）・寄附詳細（2-84〜2-162）は本分析に含まれない。
+          調査時点は<strong>平成26年度（2014年）</strong>であり、スマートフォン普及・コロナ禍・SDGs普及等の
+          社会変化を踏まえた解釈が必要。すべての数値はパーセンテージ（絶対数はn=から算出可）。
+          推計値と明記した数値は調査本文の記述から筆者が算出したもので、原表記の数値とは異なる場合がある。
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-info">
+      <h3>平成26年度 市民の社会貢献に関する実態調査 分析レポート</h3>
+      <p>
+        出典：内閣府「平成26年度 市民の社会貢献に関する実態調査」集計結果<br>
+        対象：日本全国の市民（20歳以上）　有効回答数：約 1,647名<br>
+        データ範囲：図表 2-29〜2-83（ボランティア活動関連クロス集計）
+      </p>
+    </div>
+    <div class="footer-meta">
+      <p>
+        分析ファイル：analysis_report.ipynb<br>
+        レポート作成：HTML / CSS / JavaScript<br>
+        Chart.js v4 · Noto Serif/Sans JP · BIZ UDPGothic
+      </p>
+    </div>
+  </div>
+  <div class="footer-credit" style="text-align:center;">Edited by Sur Communication Inc.</div>
+</footer>
+
+<script src="charts.js"></script>
+</body>
+</html>
