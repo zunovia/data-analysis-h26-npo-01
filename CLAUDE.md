@@ -306,6 +306,28 @@ const darkBg = {
 - `uv` が使えない場合: `C:\Users\zunov\anaconda3\python.exe` を直接使用
 - ターミナル出力に日本語が含まれる場合: `sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')` を先頭に追加してファイルにリダイレクト（`> output.txt`）し、`cat` で読む
 
+### ルート index.html のリダイレクト管理（重要）
+
+ミス（2026年3月）: 新しい data04 レポートを作成・プッシュした後も、ルートの `index.html` が旧レポート（data03 孤独・孤立）にリダイレクトしたままだったため、GitHub Pages でアクセスすると前回のレポートが表示されていた。
+
+**対策：新しいレポートを追加したら必ず以下を確認・更新すること：**
+
+1. ルート `index.html` のリダイレクト先を新しいレポートフォルダに変更する
+   ```html
+   <meta http-equiv="refresh" content="0; url=data04/%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88/html_report/">
+   ```
+2. 変更後に `git push` して GitHub Pages に反映する
+3. ブラウザでルートURLにアクセスし、正しいレポートが表示されることを確認する
+
+**リダイレクト先の履歴：**
+
+| 対象レポート | リダイレクト先 |
+|---|---|
+| data01（障害者相談支援） | `analysis_report_data01/` |
+| data02（孤独感・孤立） | `report_data02/html_report/` |
+| data03（孤独・孤立 R6） | `レポート/html_report/` |
+| data04（景気ウォッチャー）| `data04/レポート/html_report/` ← 現在 |
+
 ---
 
 ## data03 データ理解
