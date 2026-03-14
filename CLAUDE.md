@@ -493,12 +493,42 @@ tmp/generate_notebook_data03.py   # analysis_report_data03.ipynb 再生成
 ```
 tmp/generate_images_data04.py     # 全12枚生成
 tmp/generate_notebook_data04.py   # analysis_report_data04.ipynb 再生成
+tmp/export_chartdata.py           # script.js の DATA 定数を実データで更新
 ```
 
 実行方法：
 
 ```bash
 /c/Users/zunov/anaconda3/python.exe tmp/generate_images_data04.py > output.txt 2>&1
+cat output.txt
+```
+
+### watcher2-1.xls の複数セクション問題
+
+watcher2-1.xls は「全国合計」「地域別（北海道・東北・…）」が縦に連続して格納されている。
+全セクションに同一の Excel シリアル日付が繰り返されるため、インデックス重複が生じる。
+
+**対策**: 全国合計行は回答者数（col 1）が 800 人以上。これで地域別サブセクション（200 人以下）を除外できる。
+
+```python
+# watcher2-1 の全国合計フィルタ
+total = ws.cell_value(r, 1)
+if not isinstance(total, float) or total < 800:
+    continue
+```
+
+### HTMLレポートのChart.js データ管理
+
+**ミス（2026年3月）**: script.js の `DATA` 定数にハードコードされた推定値を使用してしまい、
+data04 の実データと乖離した数値が表示されていた。
+
+**対策**: `tmp/export_chartdata.py` で毎回 data04/watcher5/ から実データを読み出し、
+script.js の `DATA` ブロックを正規表現で置換する方式に変更。
+データ再生成時は必ずこのスクリプトも再実行すること。
+
+```bash
+# script.js 実データ更新手順
+/c/Users/zunov/anaconda3/python.exe tmp/export_chartdata.py > output.txt 2>&1
 cat output.txt
 ```
 
