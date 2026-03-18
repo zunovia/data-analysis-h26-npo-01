@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>公益法人の寄附金収入に関する実態調査 — 分析レポート</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ========== Header ========== -->
+<header class="report-header">
+  <h1>公益法人の寄附金収入に関する実態調査</h1>
+  <p class="subtitle">公益社団法人・公益財団法人の寄附金の実態と税額控除制度の効果分析</p>
+  <div class="meta">
+    <span>出典：内閣府（令和元年度実施）</span>
+    <span>有効回答：3,987法人（回収率46.8%）</span>
+    <span>データ期間：H26〜H30（2014〜2018年度）</span>
+  </div>
+</header>
+
+<!-- ========== Navigation ========== -->
+<nav class="toc">
+  <a href="#sec1">法人の基本属性</a>
+  <a href="#sec2">寄附金収入の実態</a>
+  <a href="#sec3">寄附金収入総額</a>
+  <a href="#sec4">税額控除制度</a>
+  <a href="#sec5">必要性と活動</a>
+  <a href="#sec6">募金活動の手段</a>
+  <a href="#sec7">寄附金の使途</a>
+  <a href="#sec8">総合考察</a>
+</nav>
+
+<!-- ========== Main Content ========== -->
+<main class="container">
+
+  <!-- Section 1: 法人の基本属性 -->
+  <section id="sec1" class="section">
+    <h2>1. 法人の基本属性</h2>
+    <h3>公益目的事業費用の規模分布</h3>
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="value">3,987</div>
+        <div class="label">有効回答法人数</div>
+      </div>
+      <div class="kpi-card">
+        <div class="value">46.8%</div>
+        <div class="label">回収率</div>
+      </div>
+      <div class="kpi-card">
+        <div class="value">21.2%</div>
+        <div class="label">20百万円未満（最多）</div>
+      </div>
+      <div class="kpi-card">
+        <div class="value">16.7%</div>
+        <div class="label">600百万円以上</div>
+      </div>
+    </div>
+    <div class="chart-img-wrap">
+      <img src="../images/fig01_事業費用規模分布.png" alt="事業費用規模分布">
+    </div>
+    <div class="insight">
+      <strong>規模の二極化：</strong>小規模法人（20百万円未満）が最多の21.2%を占める一方、600百万円以上の大規模法人も16.7%存在し、規模の二極化が顕著です。
+    </div>
+  </section>
+
+  <!-- Section 2: 寄附金収入の実態 -->
+  <section id="sec2" class="section">
+    <h2>2. 寄附金収入の実態</h2>
+
+    <h3>2.1 寄附金収入金額の年次推移</h3>
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="value">54.9%</div>
+        <div class="label">寄附金0円の法人（H30）</div>
+      </div>
+      <div class="kpi-card">
+        <div class="value">-3.7pt</div>
+        <div class="label">5年間の改善幅</div>
+      </div>
+    </div>
+    <div class="chart-img-wrap">
+      <img src="../images/fig02_寄附金収入推移.png" alt="寄附金収入推移">
+    </div>
+    <div class="insight">
+      <strong>過半数が寄附ゼロ：</strong>寄附金0円の法人割合はH26の58.6%からH30の54.9%へ改善傾向にあるものの、依然として過半数が寄附を受けていない状況です。
+    </div>
+
+    <h3>2.2 個人寄附 vs 法人寄附</h3>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>指標</th>
+          <th>個人寄附</th>
+          <th>法人寄附</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>0円の法人割合</td><td>69.7%</td><td>64.2%</td></tr>
+        <tr><td>1億円以上</td><td>0.7%</td><td>2.1%</td></tr>
+      </tbody>
+    </table>
+    <div class="chart-img-wrap">
+      <img src="../images/fig03_個人vs法人分布.png" alt="個人vs法人分布">
+    </div>
+    <div class="insight">
+      <strong>法人寄附が主力：</strong>法人寄附の方が「寄附あり」の割合がやや高く、高額帯（1,000万円以上）では法人寄附が個人を大幅に上回ります。
+    </div>
+
+    <!-- Chart.js: 0円法人割合の推移 -->
+    <h3>2.3 寄附金0円法人割合の推移</h3>
+    <div class="chartjs-canvas-wrap">
+      <canvas id="chartZeroTrend" height="300"></canvas>
+    </div>
+  </section>
+
+  <!-- Section 3: 寄附金収入総額 -->
+  <section id="sec3" class="section">
+    <h2>3. 寄附金収入総額の推移（H20〜H24）</h2>
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="value">378十億円</div>
+        <div class="label">H23ピーク（震災年）</div>
+      </div>
+      <div class="kpi-card">
+        <div class="value">2.2倍</div>
+        <div class="label">個人寄附の急増（H22→H23）</div>
+      </div>
+    </div>
+    <div class="chart-img-wrap">
+      <img src="../images/fig10_寄附金収入総額推移.png" alt="寄附金収入総額推移">
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr><th>年度</th><th>合計（十億円）</th><th>個人</th><th>法人</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>H20（2008）</td><td>326</td><td>60</td><td>244</td></tr>
+        <tr><td>H21（2009）</td><td>262</td><td>39</td><td>200</td></tr>
+        <tr><td>H22（2010）</td><td>267</td><td>58</td><td>192</td></tr>
+        <tr><td>H23（2011）</td><td>378</td><td>128</td><td>242</td></tr>
+        <tr><td>H24（2012）</td><td>371</td><td>99</td><td>272</td></tr>
+      </tbody>
+    </table>
+    <div class="insight">
+      <strong>震災の影響：</strong>H23年度（2011年）の急増は東日本大震災の影響で、個人寄附が前年比2.2倍に急増しました。
+      <span class="source-tag web">🌐 寄付白書</span>
+    </div>
+
+    <!-- Chart.js: 寄附金収入総額推移 -->
+    <div class="chartjs-canvas-wrap">
+      <canvas id="chartTotalTrend" height="320"></canvas>
+    </div>
+  </section>
+
+  <!-- Section 4: 税額控除制度 -->
+  <section id="sec4" class="section">
+    <h2>4. 税額控除制度の効果分析</h2>
+
+    <h3>4.1 制度概要</h3>
+    <div class="insight">
+      <strong>税額控除制度（H23年度創設）：</strong>PST（パブリック・サポート・テスト）要件を満たす公益法人への個人寄附について、<strong>（寄附金額−2,000円）×40%</strong> を所得税から控除できる制度。
+      <span class="source-tag web">🌐 国税庁 No.1266</span>
+    </div>
+
+    <h3>4.2 導入前後の増加率比較</h3>
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="value">+194%</div>
+        <div class="label">対象法人の個人寄附増加率</div>
+      </div>
+      <div class="kpi-card">
+        <div class="value">8.6%</div>
+        <div class="label">税額控除対象法人の割合</div>
+      </div>
+    </div>
+    <div class="chart-img-wrap">
+      <img src="../images/fig11_税額控除導入前後.png" alt="税額控除導入前後">
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr><th>指標</th><th>全体</th><th>税額控除対象</th><th>非対象</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>寄附金収入計</td><td>+31%</td><td>+52%</td><td>+23%</td></tr>
+        <tr><td>個人寄附</td><td>+118%</td><td><strong>+194%</strong></td><td>+92%</td></tr>
+        <tr><td>法人寄附</td><td>+21%</td><td>+60%</td><td>+7%</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Chart.js: 税額控除効果比較 -->
+    <div class="chartjs-canvas-wrap">
+      <canvas id="chartTaxEffect" height="320"></canvas>
+    </div>
+
+    <h3>4.3 税額控除対象法人の状況</h3>
+    <div class="chart-img-wrap">
+      <img src="../images/fig09_税額控除対象法人.png" alt="税額控除対象法人">
+    </div>
+    <div class="insight">
+      <strong>PST要件の壁：</strong>税額控除対象法人はわずか8.6%（341法人/3,987法人）。PST要件（年平均寄附者100人以上、受入寄附金30万円以上、寄附金割合1/5以上のいずれか）は小規模法人にとってハードルが高い。
+      <span class="source-tag web">🌐 公益法人Information</span>
+    </div>
+  </section>
+
+  <!-- Section 5: 必要性と活動 -->
+  <section id="sec5" class="section">
+    <h2>5. 寄附金の必要性と活動状況</h2>
+
+    <h3>5.1 寄附金収入の必要性</h3>
+    <div class="chart-img-wrap">
+      <img src="../images/fig04_寄附金必要性.png" alt="寄附金必要性">
+    </div>
+
+    <h3>5.2 必要な理由</h3>
+    <div class="chart-img-wrap">
+      <img src="../images/fig05_寄附金必要理由.png" alt="寄附金必要理由">
+    </div>
+    <div class="insight">
+      <strong>主な理由：</strong>経営基盤の強化（38.9%）、臨時支出への資金調達（11.1%）が上位。
+    </div>
+
+    <h3>5.3 寄附金を得るための活動</h3>
+    <div class="chart-img-wrap">
+      <img src="../images/fig06_寄附金活動有無.png" alt="寄附金活動有無">
+    </div>
+    <div class="insight">
+      <strong>必要性と行動のギャップ：</strong>寄附金の必要性を認識しながらも、実際に活動を行っている法人は限定的です。
+    </div>
+
+    <h3>5.4 寄附金が必要でない理由</h3>
+    <div class="chart-img-wrap">
+      <img src="../images/fig08_寄附金不要理由.png" alt="寄附金不要理由">
+    </div>
+  </section>
+
+  <!-- Section 6: 募金活動の手段 -->
+  <section id="sec6" class="section">
+    <h2>6. 募金活動の手段</h2>
+    <div class="chart-img-wrap">
+      <img src="../images/fig07_募金活動手段.png" alt="募金活動手段">
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr><th>手段</th><th>特徴</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ホームページへの掲載</td><td>最も一般的な手段</td></tr>
+        <tr><td>ダイレクトメール</td><td>個人向けに活用</td></tr>
+        <tr><td>個別訪問</td><td>法人向けに有効</td></tr>
+        <tr><td>街頭募金</td><td>割合は低い</td></tr>
+        <tr><td>電話</td><td>限定的</td></tr>
+      </tbody>
+    </table>
+    <div class="insight">
+      <strong>デジタル化の余地：</strong>調査時点（H30）ではホームページ掲載が主流。近年はオンライン決済やクラウドファンディングの活用が広がっており、デジタル化の推進余地が大きい。
+      <span class="source-tag web">🌐 補足情報</span>
+    </div>
+  </section>
+
+  <!-- Section 7: 寄附金の使途 -->
+  <section id="sec7" class="section">
+    <h2>7. 寄附金の使途</h2>
+    <div class="chart-img-wrap">
+      <img src="../images/fig12_寄附金使途推移.png" alt="寄附金使途推移">
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr><th>使途</th><th>公益法人全体</th><th>税額控除対象法人</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>公益目的事業費</td><td>24.1%</td><td><strong>64.2%</strong></td></tr>
+        <tr><td>管理費</td><td>16.9%</td><td>44.1%</td></tr>
+        <tr><td>資産取得費</td><td>12.2%</td><td>12.6%</td></tr>
+        <tr><td>収益事業等事業費</td><td>4.1%</td><td>5.2%</td></tr>
+      </tbody>
+    </table>
+    <div class="insight">
+      <strong>公益活動への充当：</strong>税額控除対象法人は公益目的事業費への充当率が64.2%と顕著に高く、寄附金が本来の公益活動に有効に使われていることが確認されます。
+    </div>
+
+    <!-- Chart.js: 使途比較 -->
+    <div class="chartjs-canvas-wrap">
+      <canvas id="chartUsage" height="320"></canvas>
+    </div>
+  </section>
+
+  <!-- Section 8: 総合考察 -->
+  <section id="sec8" class="section">
+    <h2>8. 総合考察</h2>
+
+    <h3>主要知見</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>テーマ</th><th>知見</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>寄附金の二極化</td><td>過半数（約55%）の公益法人は寄附金収入がゼロ。少数の大規模法人に集中</td></tr>
+        <tr><td>税額控除の効果</td><td>対象法人の個人寄附は+194%。制度による明確なインセンティブ効果</td></tr>
+        <tr><td>法人寄附が主力</td><td>寄附金総額の約7割は法人寄附。個人寄附の拡大余地は大きい</td></tr>
+        <tr><td>活動ギャップ</td><td>必要性を認識しつつも募金活動を行っていない法人が多い</td></tr>
+        <tr><td>PST要件の壁</td><td>税額控除対象法人は8.6%。小規模法人のハードルが高い</td></tr>
+      </tbody>
+    </table>
+
+    <h3>政策的示唆</h3>
+    <div class="insight">
+      <strong>1. PST要件のさらなる緩和</strong> — H28年度の緩和に続き、小規模法人が要件を満たしやすくする制度設計が必要<br>
+      <strong>2. デジタル化の推進</strong> — オンライン決済・クラウドファンディング等の活用促進<br>
+      <strong>3. 情報発信支援</strong> — 募金活動のノウハウ・成功事例の共有による底上げ<br>
+      <strong>4. 寄附文化の醸成</strong> — 個人寄附の拡大に向けた社会的機運の醸成
+    </div>
+    <p style="margin-top:16px; font-size:0.9rem; color:#666;">
+      <span class="source-tag web">🌐</span> 2024年には改正公益法人制度が成立し、遊休財産規制の見直し・会計報告の簡素化等の改革が進行中。
+    </p>
+
+    <h3>参考文献・出典</h3>
+    <ul style="font-size:0.9rem; line-height:2;">
+      <li><span class="source-tag data">📊</span> 内閣府「令和元年度 公益法人の寄附金収入に関する実態調査」</li>
+      <li><span class="source-tag data">📊</span> e-Stat「公益法人の寄附金収入に関する実態調査」</li>
+      <li><span class="source-tag web">🌐</span> 国税庁「No.1266 公益社団法人等に寄附をしたとき」</li>
+      <li><span class="source-tag web">🌐</span> 公益法人Information「税制上の優遇について」</li>
+      <li><span class="source-tag web">🌐</span> 日本ファンドレイジング協会「寄付白書2025」</li>
+    </ul>
+  </section>
+
+</main>
+
+<!-- ========== Footer ========== -->
+<footer class="report-footer">
+  <span>出典：内閣府「公益法人の寄附金収入に関する実態調査」（令和元年度実施）</span>
+  <span>分析日：2026年3月18日</span>
+  <div class="footer-credit"><a href="https://www.ryotakaneda.com/s-projects-side-by-side">Edited by Sur Communication Inc.</a></div>
+</footer>
+
+<!-- ========== Chart Modal ========== -->
+<div id="chartModal" class="chart-modal" role="dialog" aria-modal="true" aria-label="グラフ拡大表示">
+  <div class="chart-modal-backdrop"></div>
+  <div class="chart-modal-content">
+    <button class="chart-modal-close" aria-label="閉じる">&times;</button>
+    <img id="chartModalImg" src="" alt="拡大グラフ">
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
