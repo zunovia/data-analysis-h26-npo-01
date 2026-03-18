@@ -41,6 +41,18 @@ Chart.defaults.font.family = "'Noto Sans JP', sans-serif";
 Chart.defaults.font.size = 13;
 Chart.defaults.color = '#333';
 
+/* ========== White Background Plugin (for modal export) ========== */
+const whiteBgPlugin = {
+  id: 'whiteBg',
+  beforeDraw(chart) {
+    const { ctx, width, height } = chart;
+    ctx.save();
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, width, height);
+    ctx.restore();
+  }
+};
+
 /* ========== Value Label Plugin ========== */
 const valueLabelPlugin = {
   id: 'valueLabel',
@@ -92,7 +104,7 @@ function createCharts() {
         y: { min: 50, max: 62, ticks: { callback: v => v + '%' } }
       }
     },
-    plugins: [valueLabelPlugin]
+    plugins: [valueLabelPlugin, whiteBgPlugin]
   });
 
   // 2. 寄附金収入総額推移
@@ -125,7 +137,8 @@ function createCharts() {
         y: { stacked: true, beginAtZero: true, title: { display: true, text: '十億円' } },
         x: { stacked: true }
       }
-    }
+    },
+    plugins: [whiteBgPlugin]
   });
 
   // 3. 税額控除効果比較
@@ -161,7 +174,7 @@ function createCharts() {
         y: { beginAtZero: true, ticks: { callback: v => '+' + v + '%' } }
       }
     },
-    plugins: [valueLabelPlugin]
+    plugins: [valueLabelPlugin, whiteBgPlugin]
   });
 
   // 4. 寄附金使途比較
@@ -192,7 +205,8 @@ function createCharts() {
       scales: {
         x: { beginAtZero: true, ticks: { callback: v => v + '%' } }
       }
-    }
+    },
+    plugins: [whiteBgPlugin]
   });
 }
 

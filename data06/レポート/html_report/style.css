@@ -137,6 +137,8 @@ body {
 }
 .chart-img-wrap img {
   max-width: 100%;
+  max-height: 420px;
+  width: auto;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   cursor: zoom-in;
@@ -146,6 +148,7 @@ body {
 .chartjs-canvas-wrap {
   position: relative;
   margin: 20px 0;
+  max-width: 700px;
   cursor: zoom-in;
 }
 .chartjs-canvas-wrap canvas { max-width: 100%; }
@@ -206,7 +209,7 @@ body {
 .chart-modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0,0,0,0.55);
 }
 .chart-modal-content {
   position: relative;
